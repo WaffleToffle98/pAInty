@@ -1,2 +1,2 @@
 # pAInty
-AI painter
+pAInty is an AI that likes drawing.
