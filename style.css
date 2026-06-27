@@ -1,0 +1,153 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --ui-bg:    #16161E;
+    --surface:  #1E1E28;
+    --surface2: #25253A;
+    --border:   #2E2E44;
+    --text:     #E4E4F0;
+    --muted:    #7A7A96;
+    --accent:   #7C6FF7;
+    --accent-h: #9087FF;
+}
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--ui-bg);
+    color: var(--text);
+}
+
+#app    { height: 100vh; display: flex; flex-direction: column; }
+
+/* ── Workspace ── */
+#workspace { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Canvas column ── */
+#canvas-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 12px;
+    background: #0D0D18;
+    overflow: auto;
+    min-width: 0;
+}
+
+#canvas-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#logo { font-size: 16px; font-weight: 600; }
+#logo em { font-style: normal; color: var(--accent); }
+
+/* Mode pill */
+.pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    letter-spacing: .3px;
+}
+.pill.idle     { background: #22222E; color: var(--muted); }
+.pill.training { background: #1E1A3A; color: #9087FF; }
+.pill.done     { background: #182818; color: #6EC66E; }
+
+/* Canvas wrapper — explicit size so stacked canvases have a parent height */
+#canvas-wrapper {
+    position: relative;
+    width: 720px;
+    height: 460px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: 0 6px 40px rgba(0,0,0,.7);
+    flex-shrink: 0;
+}
+
+/* All 4 canvases sit on top of each other */
+#canvas-wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+/* Legend */
+#legend     { display: flex; gap: 20px; }
+.leg        { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--muted); }
+.leg-block  { display: inline-block; width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+
+/* ── Right panel ── */
+#panel {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+}
+
+.pblock {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.plabel {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.row  { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.key  { color: var(--muted); }
+.val  { font-family: 'Consolas', 'Cascadia Code', 'Courier New', monospace; font-size: 12px; font-weight: 500; }
+
+/* Buttons */
+.btn-run {
+    width: 100%; padding: 9px;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 5px;
+    font-size: 12px; font-weight: 600; font-family: inherit;
+    cursor: pointer; transition: background .15s;
+}
+.btn-run:hover { background: var(--accent-h); }
+
+.btn-clear {
+    width: 100%; padding: 8px;
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 5px;
+    font-size: 12px; font-weight: 500; font-family: inherit;
+    cursor: pointer; transition: all .15s;
+}
+.btn-clear:hover { color: var(--text); border-color: var(--muted); }
+
+/* Error bar */
+#error-num {
+    font-family: 'Consolas', 'Cascadia Code', monospace;
+    font-size: 22px; font-weight: 500;
+}
+
+#error-track {
+    height: 4px; background: var(--border);
+    border-radius: 2px; overflow: hidden;
+}
+
+#error-fill {
+    height: 100%; width: 0%;
+    background: var(--accent); border-radius: 2px;
+    transition: width .1s ease, background .3s;
+}

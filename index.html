@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pAInty — Training Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div id="workspace">
+
+        <div id="canvas-area">
+            <div id="canvas-header">
+                <span id="logo">🎨 p<em>AI</em>nty</span>
+                <div id="mode-pill" class="pill idle">● idle</div>
+            </div>
+            <div id="canvas-wrapper">
+                <canvas id="canvas-bg"></canvas>
+                <canvas id="canvas-target"></canvas>
+                <canvas id="canvas-ai"></canvas>
+                <canvas id="canvas-cursor"></canvas>
+            </div>
+            <div id="legend">
+                <span class="leg"><span class="leg-block" style="background:#5B91D0;opacity:.7"></span> Target</span>
+                <span class="leg"><span class="leg-block" style="background:#CC5858"></span> AI drawing</span>
+                <span class="leg"><span class="leg-block" style="background:#888899;opacity:.4"></span> AI moving</span>
+            </div>
+        </div>
+
+        <div id="panel">
+
+            <div class="pblock">
+                <div class="plabel">CONTROLS</div>
+                <button id="btn-run" class="btn-run">▶  Run</button>
+                <button id="btn-clear" class="btn-clear">↺  Clear</button>
+
+                <div class="row" style="margin-top:4px">
+                    <span class="key">speed</span>
+                    <span class="val" id="s-speed">5 px/f</span>
+                </div>
+                <input type="range" id="slider-speed" min="1" max="30" value="5" class="slider">
+
+                <div class="row">
+                    <span class="key">rendering</span>
+                    <button id="btn-render" class="btn-toggle on">ON</button>
+                </div>
+            </div>
+
+            <div class="pblock">
+                <div class="plabel">STATUS</div>
+                <div class="row"><span class="key">mode</span>       <span class="val" id="s-mode">idle</span></div>
+                <div class="row"><span class="key">epoch</span>      <span class="val" id="s-epoch">0</span></div>
+                <div class="row"><span class="key">shape</span>      <span class="val" id="s-shape">—</span></div>
+                <div class="row"><span class="key">target pos</span> <span class="val" id="s-target">—</span></div>
+                <div class="row"><span class="key">rate</span>       <span class="val" id="s-rate">—</span></div>
+            </div>
+
+            <div class="pblock">
+                <div class="plabel">AI CURSOR</div>
+                <div class="row"><span class="key">x</span>   <span class="val" id="s-x">—</span></div>
+                <div class="row"><span class="key">y</span>   <span class="val" id="s-y">—</span></div>
+                <div class="row"><span class="key">pen</span> <span class="val" id="s-pen">up</span></div>
+            </div>
+
+            <div class="pblock">
+                <div class="plabel">ERROR</div>
+                <div id="error-num">—</div>
+                <div id="error-track"><div id="error-fill"></div></div>
+                <div class="row"><span class="key">distance</span><span class="val" id="s-error">—</span></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="js/canvas.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
