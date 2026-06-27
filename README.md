@@ -1,5 +1,5 @@
 # pAInty
 pAInty is an AI that likes drawing.
 
-# How to run
-Run index.html in any web browser.
+**Github Pages Link**
+_https://waffletoffle98.github.io/pAInty/_
